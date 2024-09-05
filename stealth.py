@@ -26,50 +26,6 @@ client_id = ""
 
 GAMES = {
     1 : {
-        "name": "Riding Extreme 3D",
-        "event_delay" : 50,
-        "headers" : httpx.Headers([
-            ("Authorization", ""),
-            ("Content-Type", "application/json; charset=utf-8"),
-            ("Connection", "keep-alive"),
-            ("Host", BASE_URL[8:])
-        ]),
-        "login_data" : {
-            "appToken":"d28721be-fd2d-4b45-869e-9f253b554e50",
-            "clientId":"",
-            "clientOrigin":"deviceid"
-        },
-        "register_data" : {
-            "promoId" : "43e35910-c168-4634-ad4f-52fd764a843f",
-            "eventId" : "",
-            "eventOrigin" : "undefined"
-        },
-    },
-    2 : {
-        "name": "My Clone Army",
-        "event_delay" : 240,
-        "headers" : httpx.Headers([
-            ("Host", BASE_URL[8:]),
-            ("User-Agent", "UnityPlayer/2022.3.28f1 (UnityWebRequest/1.0, libcurl/8.5.0-DEV)"),
-            ("Accept", "*/*"),
-            ("Accept-Encoding", "gzip, deflate, br"),
-            ("Content-Type", "application/json"),
-            ("Authorization", ""),
-            ("X-Unity-Version", "2022.3.28f1")
-        ]), 
-        "login_data" : {
-            "appToken" : "74ee0b5b-775e-4bee-974f-63e7f4d5bacb",
-            "clientId" : "",
-            "clientOrigin" : "android"
-        },
-        "register_data" : {
-            "promoId" : "fe693b26-b342-4159-8808-15e3ff7f8767",
-            "eventId" : "",
-            "eventType" : "MiniQuest",
-            "eventOrigin" : "undefined"
-        }
-    },
-    3 : {
         "name": "Chain Cube 2048",
         "event_delay": 120,
         "headers" : httpx.Headers([
@@ -94,7 +50,7 @@ GAMES = {
             "eventType" : "cube_sent"
         }
     },
-    4 : {
+    2 : {
         "name" : "Train Miner",
         "event_delay" : 600,
         "headers" : httpx.Headers([
@@ -119,8 +75,8 @@ GAMES = {
             "eventType" : "hitStatue"
         }
     },
-    5 : {
-        "name" : "Merge Away! (unknown data)",
+    3 : {
+        "name" : "Merge Away! (insufficient data)",
         "event_delay" : 50,
         "headers" : httpx.Headers([
             ("Host", BASE_URL[8:]),
@@ -135,7 +91,7 @@ GAMES = {
             "eventId" : ""
         }
     },
-    6 : {
+    4 : {
         "name" : "Twerk Race 3D",
         "event_delay" : 60,
         "headers" : httpx.Headers([
@@ -158,7 +114,7 @@ GAMES = {
             "eventOrigin" : "undefined"
         }
     },
-    7 : {
+    5 : {
         "name" : "Polysphere: Art Puzzle Game",
         "event_delay" : 30,
         "headers" : httpx.Headers([
@@ -183,32 +139,8 @@ GAMES = {
             "eventType" : "test"
         }
     },
-    8 : {
-        "name" : "Mud Racing",
-        "event_delay" : 50,
-        "headers" : httpx.Headers([
-            ("Host", BASE_URL[8:]),
-            ("User-Agent", "UnityPlayer/2022.3.40f1 (UnityWebRequest/1.0, libcurl/8.5.0-DEV)"),
-            ("Accept", "*/*"),
-            ("Accept-Encoding", "deflate, gzip"),
-            ("Content-Type", "application/json"),
-            ("Authorization", ""),
-            ("X-Unity-Version", "2022.3.40f1")
-        ]),
-        "login_data" : {
-            "appToken" : "8814a785-97fb-4177-9193-ca4180ff9da8",
-            "clientOrigin" : "android",
-            "clientId" : ""
-        },
-        "register_data" : {
-            "promoId" : "8814a785-97fb-4177-9193-ca4180ff9da8",
-            "eventId" : "",
-            "eventOrigin" : "undefined",
-            "eventType" : "racing"
-        }
-    },
-    9 : {
-        "name" : "Mow and Trim (unkown data)",
+    6 : {
+        "name" : "Mow and Trim (insufficient data)",
         "event_delay" : 50,
         "headers" : httpx.Headers([
             ("Host", BASE_URL[8:]),
@@ -469,9 +401,9 @@ def generate_keys():
         file.write(f"{current_time(date=True)}\n")
 
     while key_count < total_keys:
-        if chosen_game == 5 or chosen_game == 9:
-            print(f"{current_time()} Game is not supported yet.")
-            break
+        # if chosen_game == 5 or chosen_game == 9:
+        #     print(f"{current_time()} Game is not supported yet.")
+        #     break
         login_client()
         if not chosen_game == 4:
             create_code()
@@ -522,7 +454,7 @@ def main():
         
 
     if all_games:
-        working_games = [1,2,3,4,6,7,8]
+        working_games = [1,2,4,5]
         random.shuffle(working_games)
         for i, game in enumerate(working_games):
             chosen_game = game
